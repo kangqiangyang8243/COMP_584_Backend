@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
+const authRoute = require("./controller/auth");
 
 const PORT = process.env.PORT || 5555;
 
@@ -22,6 +23,10 @@ mongoose
     console.log(err);
   });
 
+app.use("/api/auth", authRoute);
+
+const port = process.env.PORT || 5555;
+
 const server = app.listen(PORT, () => {
-  console.log(`Backend start on port ${PORT}!`);
+  console.log(`Backend start on port ${port}!`);
 });
