@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
 
     const { password, ...userWithoutPassword } = users._doc;
 
-    return res.status(200).send({ status: true, userWithoutPassword });
+    return res.send({ status: true, userWithoutPassword });
   } catch (error) {
     return res.json(error);
   }
