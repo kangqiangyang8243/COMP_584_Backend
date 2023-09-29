@@ -4,6 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const authRoute = require("./controller/auth");
+const categoryRoute = require("./controller/category");
+const postRoute = require("./controller/post");
 
 const PORT = process.env.PORT || 5555;
 
@@ -24,9 +26,11 @@ mongoose
   });
 
 app.use("/api/auth", authRoute);
+app.use("/api/category", categoryRoute);
+app.use("/api/posts", postRoute);
 
 const port = process.env.PORT || 5555;
 
-const server = app.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Backend start on port ${port}!`);
 });
