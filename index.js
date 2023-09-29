@@ -6,6 +6,7 @@ const app = express();
 const authRoute = require("./controller/auth");
 const categoryRoute = require("./controller/category");
 const postRoute = require("./controller/post");
+const userRoute = require("./controller/user");
 
 const PORT = process.env.PORT || 5555;
 
@@ -28,6 +29,7 @@ mongoose
 app.use("/api/auth", authRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/posts", postRoute);
+app.use("/api/users", userRoute);
 
 const port = process.env.PORT || 5555;
 
