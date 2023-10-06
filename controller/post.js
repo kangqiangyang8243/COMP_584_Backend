@@ -16,11 +16,19 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   let posts;
   const catName = req.query.catName;
+  const search = req.query.search;
   try {
     if (catName) {
       posts = await Posts.find({
         categories: {
           $in: [catName],
+        },
+      });
+    } else if (search) {
+      posts = await Posts.find({
+        title: {
+          $regex: search,
+          $options: "i",
         },
       });
     } else {
