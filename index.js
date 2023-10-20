@@ -7,6 +7,7 @@ const authRoute = require("./controller/auth");
 const categoryRoute = require("./controller/category");
 const postRoute = require("./controller/post");
 const userRoute = require("./controller/user");
+const commentRoute = require("./controller/comment");
 
 const PORT = process.env.PORT || 5555;
 
@@ -30,6 +31,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/users", userRoute);
+app.use("/api/comments", commentRoute);
 
 const port = process.env.PORT || 5555;
 
