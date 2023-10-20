@@ -12,6 +12,16 @@ router.post("/", async (req, res) => {
   }
 });
 
+//Delete post
+router.delete("/:postId", async (req, res) => {
+  try {
+    await Posts.findByIdAndDelete({ _id: req.params.postId });
+    res.json("Delete Post Successful");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // get all posts
 router.get("/", async (req, res) => {
   let posts;
