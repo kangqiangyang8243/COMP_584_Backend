@@ -17,6 +17,7 @@ router.post("/register", async (req, res) => {
     const user = await Users.create({
       ...req.body,
       password: hashedPassword,
+      isOnline: true,
     });
 
     const { password, ...userWithoutPassword } = user._doc;
@@ -35,6 +36,8 @@ router.post("/login", async (req, res) => {
     if (!isMatch) {
       return res.json({ msg: "Invalid password", status: false });
     }
+
+    await Users.findByIdAndUpdate(users._id, { isOnline: true });
 
     const { password, ...userWithoutPassword } = users._doc;
 

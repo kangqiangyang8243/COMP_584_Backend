@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    isOnline: {
+      type: Boolean,
+      default: false,
+      require: true,
+    },
   },
   { timestamps: true }
 );
