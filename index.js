@@ -8,6 +8,7 @@ const categoryRoute = require("./controller/category");
 const postRoute = require("./controller/post");
 const userRoute = require("./controller/user");
 const commentRoute = require("./controller/comment");
+const BookkeepingRoute = require("./controller/bookkeeping");
 
 const PORT = process.env.PORT || 5555;
 
@@ -32,6 +33,7 @@ app.use("/api/category", categoryRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/users", userRoute);
 app.use("/api/comments", commentRoute);
+app.use("/api/bookkeeping", BookkeepingRoute);
 
 const port = process.env.PORT || 5555;
 

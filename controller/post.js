@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get all posts
+// get  post
 router.get("/:postId", async (req, res) => {
   try {
     // save() from mongoose
