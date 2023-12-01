@@ -4,9 +4,10 @@ const Bookkeeping = require("../models/Bookkeeping");
 //create Book Keeping
 router.post("/", async (req, res) => {
   try {
-    // save() from mongoose
     const newKeep = await Bookkeeping.create({ ...req.body });
     res.status(200).json(newKeep);
+
+    // save() from mongoose
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -22,10 +23,10 @@ router.delete("/:bookkeepId", async (req, res) => {
   }
 });
 
-// get all posts
-router.get("/", async (req, res) => {
+// get posts if the post user is current login user
+router.get("/:userId", async (req, res) => {
   try {
-    const bookkeep = await Bookkeeping.find();
+    const bookkeep = await Bookkeeping.find({ userId: req.params.userId });
 
     res.status(200).json(bookkeep);
   } catch (error) {
