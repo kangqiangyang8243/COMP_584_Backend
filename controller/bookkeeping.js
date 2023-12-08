@@ -23,6 +23,20 @@ router.delete("/:bookkeepId", async (req, res) => {
   }
 });
 
+//Put post
+router.put("/:bookkeepId", async (req, res) => {
+  try {
+    await Bookkeeping.findByIdAndUpdate(
+      { _id: req.params.bookkeepId },
+      req.body,
+      { new: true }
+    );
+    res.json("update keeping Successful");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // get posts if the post user is current login user
 router.get("/:userId", async (req, res) => {
   try {
